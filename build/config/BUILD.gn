@@ -72,6 +72,8 @@ config("debug") {
       # have to tell it to turn it off.
       defines += [ "_HAS_ITERATOR_DEBUGGING=0" ]
     }
+    defines += [ "_HAS_ITERATOR_DEBUGGING=0" ]
+
   } else if (is_linux && !is_android && current_cpu == "x64" &&
              !disable_iterator_debugging) {
     # Enable libstdc++ debugging facilities to help catch problems early, see
@@ -83,6 +85,10 @@ config("debug") {
 
 config("release") {
   defines = [ "NDEBUG" ]
+
+  if (is_win) {
+    defines += [ "_SILENCE_CLANG_COROUTINE_MESSAGE" ]
+  }
 
   # Sanitizers.
   # TODO(GYP) The GYP build has "release_valgrind_build == 0" for this
