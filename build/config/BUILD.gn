@@ -72,7 +72,7 @@ config("debug") {
       # have to tell it to turn it off.
       defines += [ "_HAS_ITERATOR_DEBUGGING=0" ]
     }
-    defines += [ "_HAS_ITERATOR_DEBUGGING=0" ]
+    defines += [ "_SILENCE_CLANG_COROUTINE_MESSAGE" ]
 
   } else if (is_linux && !is_android && current_cpu == "x64" &&
              !disable_iterator_debugging) {
