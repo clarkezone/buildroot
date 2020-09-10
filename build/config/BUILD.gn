@@ -72,6 +72,8 @@ config("debug") {
       # have to tell it to turn it off.
       defines += [ "_HAS_ITERATOR_DEBUGGING=0" ]
     }
+    defines += [ "_SILENCE_CLANG_COROUTINE_MESSAGE" ]
+
   } else if (is_linux && !is_android && current_cpu == "x64" &&
              !disable_iterator_debugging) {
     # Enable libstdc++ debugging facilities to help catch problems early, see
@@ -83,6 +85,10 @@ config("debug") {
 
 config("release") {
   defines = [ "NDEBUG" ]
+
+  if (is_win) {
+    defines += [ "_SILENCE_CLANG_COROUTINE_MESSAGE" ]
+  }
 
   # Sanitizers.
   # TODO(GYP) The GYP build has "release_valgrind_build == 0" for this
@@ -109,23 +115,23 @@ config("default_libs") {
     libs = [
       "advapi32.lib",
       "comdlg32.lib",
-      "dbghelp.lib",
+      #"dbghelp.lib",
       "delayimp.lib",
       "dnsapi.lib",
-      "gdi32.lib",
+      #"gdi32.lib",
       "iphlpapi.lib",
-      "kernel32.lib",
+      #"kernel32.lib",
       "msimg32.lib",
       "odbc32.lib",
       "odbccp32.lib",
       "ole32.lib",
       "oleaut32.lib",
-      "psapi.lib",
+      #"psapi.lib",
       "shell32.lib",
       "shlwapi.lib",
       "Rpcrt4.lib",
-      "user32.lib",
-      "usp10.lib",
+      #"user32.lib",
+      #"usp10.lib",
       "uuid.lib",
       "version.lib",
       "wininet.lib",
