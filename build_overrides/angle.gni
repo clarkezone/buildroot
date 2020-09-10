@@ -7,10 +7,7 @@
 
 angle_root = "//third_party/angle"
 
-<<<<<<< HEAD
 # Flutter's buildroot looks enough like Chromium to satisfy Angle.
-=======
->>>>>>> a284878... Fix angle build
 angle_has_build = true
 
 angle_googletest_dir = "//third_party/googletest/src"
