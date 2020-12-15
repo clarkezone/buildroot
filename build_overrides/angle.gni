@@ -20,3 +20,5 @@ angle_jsoncpp_dir = "//third_party/jsoncpp"
 # This is a general Chromium flag, but in the Flutter build only ANGLE needs it
 # so it is defined here.
 is_cfi = false
+
+use_xcode_clang = false
